@@ -1,0 +1,18 @@
+name: Trigger Private Repo
+
+on:
+  push:
+    branches:
+      - main  # or the branch you care about
+
+jobs:
+  trigger-private:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Private Repo Workflow
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.PRIVATE_REPO_PAT }}
+          repository: chetanbothra/apache-private
+          event-type: public-push
+          client-payload: '{"ref": "${{ github.ref }}", "commit": "${{ github.sha }}"}'
