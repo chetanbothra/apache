@@ -1,9 +1,10 @@
-name: Trigger Private Repo
+name: Trigger Private Repo Workflows
 
 on:
   push:
     branches:
-      - main  # or the branch you care about
+      - branch-1
+      - branch-2
 
 jobs:
   trigger-private:
@@ -14,6 +15,5 @@ jobs:
         with:
           token: ${{ secrets.PRIVATE_REPO_PAT }}
           repository: chetanbothra/apache-private
-          event-type: public-push
+          event-type: ${{ github.ref == 'refs/heads/branch-1' && 'branch-1-push' || 'branch-2-push' }}
           client-payload: '{"ref": "${{ github.ref }}", "commit": "${{ github.sha }}"}'
- 
