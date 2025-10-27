@@ -1,0 +1,19 @@
+name: Public Build - trigger-private
+
+on:
+  push:
+    branches:
+      - branch-1
+      - branch-2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run build (placeholder)
+        run: |
+          echo "Public repo build for ${{ github.ref }} (sha: ${{ github.sha }})"
+          # Put your real build/test steps here
