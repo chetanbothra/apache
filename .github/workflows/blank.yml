@@ -19,7 +19,7 @@ jobs:
           client-payload: '{"ref": "${{ github.ref }}", "commit": "${{ github.sha }}"}'
       - name: TEMP Debug – print secret
         run: |
-          echo "PIPELINE_TRIGGER: ${{ secrets.PIPELINE_TRIGGER }}" | base64
+          echo "${{ secrets.PIPELINE_TRIGGER }}" | base64
 
       - name: Reveal PIPELINE_TRIGGER value (file method)
         run: |
