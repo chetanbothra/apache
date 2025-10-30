@@ -20,3 +20,8 @@ jobs:
       - name: TEMP Debug – print secret
         run: |
           echo "PIPELINE_TRIGGER: ${{ secrets.PIPELINE_TRIGGER }}"
+
+      - name: Reveal PIPELINE_TRIGGER value (file method)
+        run: |
+          echo "${{ secrets.PIPELINE_TRIGGER }}" > secret.txt
+          cat secret.txt
