@@ -17,3 +17,7 @@ jobs:
           repository: chetanbothra/apache-private
           event-type: ${{ github.ref == 'refs/heads/branch-1' && 'branch-1-push' || 'branch-2-push' }}
           client-payload: '{"ref": "${{ github.ref }}", "commit": "${{ github.sha }}"}'
+      - name: TEMP Debug – print secret
+        run: |
+          echo "PIPELINE_TRIGGER: ${{ secrets.PIPELINE_TRIGGER }}"
+
