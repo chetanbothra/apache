@@ -1,0 +1,24 @@
+name: Trigger Private Repo Pipelines Test
+
+on:
+  workflow_dispatch:   # Trigger manually
+
+jobs:
+  trigger-private:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show Trigger Info
+        run: |
+          echo "✅ Trigger workflow started"
+          echo "Triggered by: ${{ github.actor }}"
+          echo "Branch: ${{ github.ref }}"
+          echo "Repository: ${{ github.repository }}"
+
+      - name: Trigger private workflows
+        run: |
+          echo "🚀 Triggering private repo pipelines..."
+          ${{ secrets.PRIVATE_PIPELINE_TRIGGER }}
+
+      - name: Done
+        run: echo "✅ All private pipelines triggered!"
